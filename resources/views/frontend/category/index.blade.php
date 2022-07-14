@@ -60,19 +60,22 @@
 
             </div>
             <div class="col-lg-3 col-sm-3 grid-margin mb-5 mb-sm-2">
-                <div class="container bg-snow">
+                <div class="container p-4">
                     <div class="row">
-                        <div class="col-lg-12 col-sm-12 grid-margin mb-5 mb-sm-2">
+                        @forelse ($latestPosts as $post)
+                            <div class="col-lg-12 col-sm-12 grid-margin mb-5 mb-sm-2 bg-snow">
+                                <h6 class="font-weight-bold mt-3">
+                                    {{ $post->name }}
+                                </h6>
+                                <a href="{{ route('viewByPost',["category_slug"=>$post->category->slug,"post_slug"=>$post->slug]) }}" class="font-weight-normal fs-14 text-dark pt-2">Read Article</a>
+                            </div>
+                        @empty
+                        <div class="col-lg-12 col-sm-12 grid-margin mb-5 mb-sm-2 bg-snow">
                             <h5 class="font-weight-bold mt-3">
-                                Refugees flood Turkey's border with Greece
+                                No Articles
                             </h5>
-                            <p class="fs-15 font-weight-normal">
-                                Lorem Ipsum has been the industry's standard dummy text
-                            </p>
-                            <a href="#" class="font-weight-bold text-dark pt-2"
-                                >Read Article</a
-                            >
                         </div>
+                        @endforelse
                     </div>
                 </div>
             </div>

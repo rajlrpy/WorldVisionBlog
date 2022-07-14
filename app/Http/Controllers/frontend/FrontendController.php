@@ -14,11 +14,13 @@ class FrontendController extends Controller
         $category = Category::where('slug',$category_slug)->where('status','1')->first();
         if($category){
             $posts = Post::withCount('comments')->where('category_id',$category->id)->where('status','1')->paginate(10);
+            $latestPosts = Post::with('category')->where('status','1')->latest()->take(3)->get();
+            return view('frontend.category.index', compact('posts','category','latestPosts'));
+
         }
         else{
             return redirect(url('/'));
         }
-        return view('frontend.category.index', compact('posts','category'));
     }
 
     public function viewByPost(string $category_slug, string $post_slug){
