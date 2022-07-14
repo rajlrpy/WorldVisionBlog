@@ -41,7 +41,7 @@
               <div class="d-flex justify-content-between align-items-center navbar-top">
                 <ul class="navbar-left">
                   <li>{{ date('D').", ".date('d M').", ".date('Y')." " }}</li>
-                  <li>30°C,USA</li>
+                  <li>30°C,New York</li>
                 </ul>
                 <div>
                   <a class="navbar-brand" href="#"
