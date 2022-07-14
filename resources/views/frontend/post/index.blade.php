@@ -114,20 +114,28 @@
     <div class="row">
         <div class="col-lg-9 col-sm-9 grid-margin mb-2 mb-sm-2 bg-snow">
             <p class="fs-15 font-weight-bold">
-                {{ $comment->user_id==auth()->user()->id ? $comment->user->name . " (You)": $comment->user->name}}
+                @if (!auth()->check())
+                    {{ $comment->user->name }}
+
+                @endif
+              @auth
+                    {{ $comment->user_id==auth()->user()->id ? $comment->user->name . " (You)": $comment->user->name}}
+              @endauth
             </p>
             <p class="fs-12 font-weight-normal">
                 {!! $comment->comment !!}
             </p>
             <p class="text-color m-0  d-flex align-items-center">
                 <span class="fs-10 mr-1">added on {{ $comment->created_at->format('d-M-Y h:i:s') }}</span>
-                @if ($comment->user_id == auth()->user()->id)
-                    <i class="mdi mdi-event-time mr-3"></i>
-                    <span class="fs-10 mr-1">edit</span>
-                    <i class="mdi mdi-comment-outline mr-2"></i>
-                    <span class="fs-10 mr-1">delete</span>
-                    <i class="mdi mdi-comment-outline"></i>
-                @endif
+                @auth
+                    @if ($comment->user_id == auth()->user()->id)
+                        <i class="mdi mdi-event-time mr-3"></i>
+                        <span class="fs-10 mr-1">edit</span>
+                        <i class="mdi mdi-comment-outline mr-2"></i>
+                        <span class="fs-10 mr-1">delete</span>
+                        <i class="mdi mdi-comment-outline"></i>
+                    @endif
+                @endauth
             </p>
         </div>
     </div>
