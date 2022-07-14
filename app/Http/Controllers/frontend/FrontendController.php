@@ -29,7 +29,7 @@ class FrontendController extends Controller
         if($category){
             $post = Post::withCount('comments')->where('category_id',$category->id)->where('slug',$post_slug)->where('status','1')->first();
             if($post){
-                $comments = Comment::with('user')->latest()->paginate(3);
+                $comments = Comment::with('user')->where('post_id',$post->id)->latest()->paginate(3);
                 return view('frontend.post.index', compact('post','comments'));
             }
             else{

@@ -53,13 +53,13 @@
 
                         </tbody>
                         <tfoot>
-                          <tr>
-                            <th>SN</th>
-                            <th>post Name</th>
-                            <th>Image</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
+                            <tr>
+                              <th>SN</th>
+                              <th>Post Name</th>
+                              <th>Category Name</th>
+                              <th>Status</th>
+                              <th>Action</th>
+                            </tr>
                         </tfoot>
                       </table>
                     </div>
