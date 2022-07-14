@@ -41,10 +41,10 @@
               <div class="d-flex justify-content-between align-items-center navbar-top">
                 <ul class="navbar-left">
                   <li>{{ date('D').", ".date('d M').", ".date('Y')." " }}</li>
-                  <li>30°C,New York</li>
+                  <li>30°C,India</li>
                 </ul>
                 <div>
-                  <a class="navbar-brand" href="#"
+                  <a class="navbar-brand" href="/"
                     ><img src="{{ asset('frontend/assets/images/logo.svg') }}" alt=""
                   /></a>
                 </div>
@@ -126,7 +126,7 @@
                     @endphp
                     @foreach ($categories as $category)
                         <li class="nav-item ">
-                            <a class="nav-link @if(empty($post)) {{ '' }} @else {{ $post->category->slug==$category->slug?'p-active':' ' }}  @endif" style="padding: 10px !important" href="{{ route('viewByCategory',$category->slug) }}" >{{ $category->name }}</a>
+                            <a class="nav-link @if(!empty($post)){{ $post->category->slug==$category->slug?'p-active':' ' }}  @endif" style="padding: 10px !important" href="{{ route('viewByCategory',$category->slug) }}" >{{ $category->name }}</a>
                         </li>
                     @endforeach
                     <li class="nav-item">

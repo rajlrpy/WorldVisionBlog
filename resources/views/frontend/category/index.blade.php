@@ -62,12 +62,12 @@
             <div class="col-lg-3 col-sm-3 grid-margin mb-5 mb-sm-2">
                 <div class="container p-4">
                     <div class="row">
-                        @forelse ($latestPosts as $post)
+                        @forelse ($latestPosts as $latestpost)
                             <div class="col-lg-12 col-sm-12 grid-margin mb-5 mb-sm-2 bg-snow">
                                 <h6 class="font-weight-bold mt-3">
-                                    {{ $post->name }}
+                                    {{ $latestpost->name }}
                                 </h6>
-                                <a href="{{ route('viewByPost',["category_slug"=>$post->category->slug,"post_slug"=>$post->slug]) }}" class="font-weight-normal fs-14 text-dark pt-2">Read Article</a>
+                                <a href="{{ route('viewByPost',["category_slug"=>$latestpost->category->slug,"post_slug"=>$latestpost->slug]) }}" class="font-weight-normal fs-14 text-dark pt-2">Read Article</a>
                             </div>
                         @empty
                         <div class="col-lg-12 col-sm-12 grid-margin mb-5 mb-sm-2 bg-snow">
